@@ -4,11 +4,10 @@ import { Router, NavigationStart, NavigationEnd } from '@angular/router';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css'],
-  // animations: [fadeInOut]
+  styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  loading: boolean = true
+  loading: boolean = true;
 
   constructor(private router: Router) { }
 
@@ -21,19 +20,24 @@ export class AppComponent implements OnInit {
       }
     });
 
-    // document.addEventListener('contextmenu', function (event) {
-    //   event.preventDefault();
-    // });
-  }
-
-  onKeyDown(event: KeyboardEvent) {
-    if (event.ctrlKey && event.shiftKey && event.key === 'C') {
+    // Prevent right-click context menu
+    document.addEventListener('contextmenu', function (event) {
       event.preventDefault();
-    }
+    });
+
+    // Prevent Ctrl+Shift+C
+    document.addEventListener('keydown', (event) => {
+      if (event.ctrlKey && event.shiftKey && event.key === 'C') {
+        event.preventDefault();
+      }
+    });
   }
 
+  // Prevent F12 and Ctrl+Shift+I
   @HostListener('document:keydown', ['$event'])
   handleKeyboardEvent(event: KeyboardEvent) {
-    this.onKeyDown(event);
+    if (event.key === 'F12' || (event.ctrlKey && event.shiftKey && event.key === 'I')) {
+      event.preventDefault();
+    }
   }
 }

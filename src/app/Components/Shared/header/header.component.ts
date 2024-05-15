@@ -41,6 +41,7 @@ export class HeaderComponent implements OnInit, AfterViewInit {
   hideHeader: boolean = false;
   role!: string;
   isLogin: boolean;
+  isHomeActive: boolean = true;
 
   constructor(
     private renderer: Renderer2,
@@ -140,6 +141,8 @@ export class HeaderComponent implements OnInit, AfterViewInit {
       const offsetX = rect.left + window.pageXOffset;
       marker.style.width = target.offsetWidth + 'px'; // Set marker width to target width
       marker.style.left = offsetX + 'px';
+
+      this.isHomeActive = false;
     }
   }
 

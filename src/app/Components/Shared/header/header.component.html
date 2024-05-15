@@ -12,10 +12,7 @@
     <div style="padding-top:1rem;" class="side-btns">
       <button mat-button routerLink="/home" routerLinkActive="active">الرئيسية</button>
       <button mat-button routerLink="/courses" routerLinkActive="active">الكورسات</button>
-      <!-- <button mat-button routerLink="/offers">العروض</button> -->
       <button mat-button routerLink="/teachers" routerLinkActive="active">المدرسين</button>
-      <!-- <button mat-button routerLink="/about" routerLinkActive="active">عن المنصة</button> -->
-      <!-- <button mat-button routerLink="/exams">امتحانات عامة</button> -->
       <button mat-button routerLink="/parents" routerLinkActive="active">ولي الأمر</button>
     </div>
     <hr>
@@ -57,16 +54,12 @@
         <!-- <div></div> -->
 
         <div class="nav-items flex gap-1">
-          <button #button1 routerLink="/home" color="title" class="unset-button" routerLinkActive="active"
+          <button #button1 [class.active]="isHomeActive" routerLink="/home" color="title" class="unset-button" routerLinkActive="active"
             (click)="moveMarker(button1)">الرئيسية</button>
           <button #button2 routerLink="/courses" class="unset-button" routerLinkActive="active"
             (click)="moveMarker(button2)">الكورسات</button>
-          <!-- <button  routerLink="/offers">العروض</button> -->
           <button #button3 class="unset-button" routerLink="/teachers" routerLinkActive="active"
             (click)="moveMarker(button3)">المدرسين</button>
-          <!-- <button #button4 routerLink="/about" class="unset-button" routerLinkActive="active"
-            (click)="moveMarker(button4)">عن المنصة</button> -->
-          <!-- <button  routerLink="/exams">امتحانات عامة</button> -->
           <button #button5 routerLink="/parents" class="unset-button" routerLinkActive="active"
             (click)="moveMarker(button5)">ولي
             الأمر</button>
