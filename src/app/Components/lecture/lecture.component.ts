@@ -37,6 +37,7 @@ export class LectureComponent implements OnInit {
     private titleService: Title
   ) {
     this.userId = this.userData.getUserId();
+    this.role = this.userData.getUserRole();
   }
 
   ngOnInit(): void {
@@ -62,6 +63,8 @@ export class LectureComponent implements OnInit {
         }
       );
     });
+
+    this.checkEnrollment();
   }
 
   checkEnrollment() {

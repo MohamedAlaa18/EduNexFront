@@ -41,7 +41,6 @@ export class HeaderComponent implements OnInit, AfterViewInit {
   hideHeader: boolean = false;
   role!: string;
   isLogin: boolean;
-  isHomeActive: boolean = true;
 
   constructor(
     private renderer: Renderer2,
@@ -141,17 +140,20 @@ export class HeaderComponent implements OnInit, AfterViewInit {
       const offsetX = rect.left + window.pageXOffset;
       marker.style.width = target.offsetWidth + 'px'; // Set marker width to target width
       marker.style.left = offsetX + 'px';
-
-      this.isHomeActive = false;
     }
   }
 
-  // Move marker to the button with the 'active' class
   MarkerActiveDetect() {
     setTimeout(() => {
       const activeButton = document.querySelector('.nav-items button.active') as HTMLElement;
       if (activeButton) {
         this.moveMarker(activeButton);
+      } else {
+        // Move marker to home button if no button is active
+        const homeButton = document.querySelector('.nav-items button.router-link-active') as HTMLElement;
+        if (homeButton) {
+          this.moveMarker(homeButton);
+        }
       }
     });
 
@@ -161,6 +163,12 @@ export class HeaderComponent implements OnInit, AfterViewInit {
           const activeButton = document.querySelector('.nav-items button.active') as HTMLElement;
           if (activeButton) {
             this.moveMarker(activeButton);
+          } else {
+            // Move marker to home button if no button is active
+            const homeButton = document.querySelector('.nav-items button.router-link-active') as HTMLElement;
+            if (homeButton) {
+              this.moveMarker(homeButton);
+            }
           }
         });
       }
