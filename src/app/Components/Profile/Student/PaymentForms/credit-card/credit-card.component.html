@@ -5,7 +5,7 @@
     أدخل ثمن الشحن ({{paymentType == 'credit'? 'بطاقة بنكية' : 'كشك'}})
   </h3>
 
-  <h4 *ngIf="paymentResponse" class="text-success mb-2">
+  <h4 *ngIf="paymentResponse && paymentType == 'kiosk'" class="text-success mb-2">
     تم الطلب. الرقم المرجعي: {{ paymentResponse.data }}
   </h4>
 

@@ -61,7 +61,10 @@ export class AboutAcademyComponent implements OnInit {
     if (this.options[0].selected) {
       this.chosenCards = this.courses;
     } else if (this.options[1].selected) {
-      this.chosenCards = this.teachers;
+      this.chosenCards = this.teachers.map(teacher => {
+        const teacherCourses = this.courses.filter(course => course.teacherId === teacher.id);
+        return teacherCourses.length > 0 ? { ...teacher, courses: teacherCourses } : null;
+      }).filter(Boolean) as ITeacher[];
     }
   }
 }

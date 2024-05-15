@@ -50,8 +50,11 @@ export class CoursesService {
     );
   }
 
-  courseEnroll(studentId: string, courseId: number, couponCode: string): Observable<ICourse> {
-    const params = new HttpParams().set('couponcodes', couponCode);
+  courseEnroll(studentId: string, courseId: number, couponCode?: string): Observable<ICourse> {
+    let params = new HttpParams();
+    if (couponCode) {
+      params = params.set('couponcodes', couponCode);
+    }
 
     return this.httpClient.post<ICourse>(
       `${this.URL}/api/Courses/enroll`,
@@ -59,7 +62,6 @@ export class CoursesService {
       { params }
     );
   }
-
 
   getAllTeacherCourses(teacherId: string): Observable<ICourse[]> {
     return this.httpClient.get<ICourse[]>(`${this.URL}/api/Courses/GetTeacherCourses?teacherId=${teacherId}`);
@@ -69,11 +71,11 @@ export class CoursesService {
     return this.httpClient.get<ISubject[]>(`${this.URL}/api/Courses/get-All-Subject`);
   }
 
-  getCoursesOrderedByCreateionDateDescending(): Observable<ICourse[]> {
-    return this.httpClient.get<ICourse[]>(`${this.URL}/api/Courses/GetCoursesOrderedByCreateionDateDescending`);
+  getCoursesOrderedByCreationDateDescending(): Observable<ICourse[]> {
+    return this.httpClient.get<ICourse[]>(`${this.URL}/api/Home/GetCoursesOrderedByCreationDateDescending`);
   }
 
   getCoursesOrderedByEnrollment(): Observable<ICourse[]> {
-    return this.httpClient.get<ICourse[]>(`${this.URL}/api/Courses/GetCoursesOrderedByEnrollment`);
+    return this.httpClient.get<ICourse[]>(`${this.URL}/api/Home/GetCoursesOrderedByEnrollment`);
   }
 }

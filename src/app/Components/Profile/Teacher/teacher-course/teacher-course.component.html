@@ -3,7 +3,7 @@
     <div class="table-container flex-grow-1">
       <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 flex-grow-1">
         <!-- Course Column -->
-        <ng-container matColumnDef="CourseName">
+        <ng-container matColumnDef="CourseName" class="CourseName">
           <th mat-header-cell *matHeaderCellDef>اسم الكورس</th>
           <td [routerLink]="['/course', element.courseID]" mat-cell *matCellDef="let element" class="courseID">
             <div class="course-details-container flex gap-2">

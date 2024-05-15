@@ -22,11 +22,12 @@ export class StudentCourseComponent implements OnInit {
       // Assign courses data to the course property
       this.course = courses.map((course: any) => {
         return {
-          course: course.courseName,
-          image: course.courseThumbnail
+          courseId:course.courseId,
+          courseName: course.courseName,
+          courseThumbnail: course.courseThumbnail
         };
       });
-      console.log(this.course);
+      // console.log(this.course);
     });
   }
 }

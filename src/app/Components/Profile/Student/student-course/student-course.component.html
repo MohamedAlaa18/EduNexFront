@@ -4,10 +4,10 @@
       <!-- Course Column -->
       <ng-container matColumnDef="Course">
         <th mat-header-cell *matHeaderCellDef> الكورس </th>
-        <td mat-cell *matCellDef="let element">
+        <td mat-cell [routerLink]="['/course', element.courseId]" *matCellDef="let element" class="courseID">
           <div class="flex gap-2">
-            <img src={{element.image}} alt="course-image" width="50" height="50" class="rounded-5" />
-            <span> {{element.course}}</span>
+            <img src={{element.courseThumbnail}} alt="course-image" width="50" height="50" class="rounded-5" />
+            <span> {{element.courseName}}</span>
           </div>
         </td>
       </ng-container>

@@ -1,32 +1,34 @@
 <section>
-  <!-- <div class="d-flex flex-column"> -->
-    <h6 style="color: orange;">لية تختارنا</h6>
-   <div class="flex gap-3">
-     <h3 style="color: var(--btn); font-weight: 700;">ترتيب الطلاب</h3>
+  <h6 style="color: orange;">لية تختارنا</h6>
+  <div class="flex gap-3">
+    <h3 style="color: var(--btn); font-weight: 700;">ترتيب الطلاب</h3>
 
-       <button mat-button routerLink="/rank" class="custom-button my-3">شاهد المزيد</button>
-   </div>
-
-  <!-- </div> -->
+    <button mat-button routerLink="/rank" class="custom-button my-3">شاهد المزيد</button>
+  </div>
 
   <div class="flex justify-content-center flex-wrap gap-3">
-    <div class="text-center hidden" AppearFromRight>
+    <div class="text-center hidden" AppearFromRight *ngIf="rankData && rankData.length >= 2">
       <img src="assets/image/2.png" alt="" style="width: 12rem;">
-      <h5 style="color: var(--btn); font-weight: 700;" class="mt-3">علا شعبان السيد</h5>
-      <h6 style="color: orange;">البحيرة</h6>
+      <div *ngIf="rankData[1]?.studentName">
+        <h5 style="color: var(--btn); font-weight: 700;" class="mt-3">{{rankData[1]?.studentName}}</h5>
+        <h6 style="color: orange;">الثاني</h6>
+      </div>
     </div>
 
-    <div class="text-center hidden" AppearFromRight>
+    <div class="text-center hidden" AppearFromRight *ngIf="rankData && rankData.length >= 1">
       <img src="assets/image/1.png" alt="" style="width: 16rem;">
-      <h5 style="color: var(--btn); font-weight: 700;" class="mt-3">محمد أحمد عبد الرحمن حسنين</h5>
-      <h6 style="color: orange;">أسيوط</h6>
-
+      <div *ngIf="rankData[0]?.studentName">
+        <h5 style="color: var(--btn); font-weight: 700;" class="mt-3">{{rankData[0]?.studentName}}</h5>
+        <h6 style="color: orange;">الأول</h6>
+      </div>
     </div>
 
-    <div class="text-center hidden" AppearFromRight>
+    <div class="text-center hidden" AppearFromRight *ngIf="rankData && rankData.length >= 3">
       <img src="assets/image/3.png" alt="" style="width: 10rem;">
-      <h5 style="color: var(--btn); font-weight: 700;" class="mt-3">نورين عماد الرزقا</h5>
-      <h6 style="color: orange;">البحيرة</h6>
+      <div *ngIf="rankData[2]?.studentName">
+        <h5 style="color: var(--btn); font-weight: 700;" class="mt-3">{{rankData[2]?.studentName}}</h5>
+        <h6 style="color: orange;">الثالث</h6>
+      </div>
     </div>
   </div>
 

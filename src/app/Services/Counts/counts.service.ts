@@ -21,10 +21,19 @@ export class CountsService {
   }
 
   getCountAllTeachers(): Observable<any> {
-    return this.httpClient.get<any>(`${this.URL}/teachers/count`);
+    return this.httpClient.get<any>(`${this.URL}/api/Home/GetTeachersCount`);
   }
 
   getCountAllStudents(): Observable<any> {
-    return this.httpClient.get<any>(`${this.URL}/students/count`);
+    return this.httpClient.get<any>(`${this.URL}/api/Home/GetStudentCount`);
+  }
+
+  getCountAllCourses(): Observable<any> {
+    return this.httpClient.get<any>(`${this.URL}/api/Home/GetCoursesCount`);
+  }
+
+  getCountAllLectures(): Observable<any> {
+    return this.httpClient.get<any>(`${this.URL}/api/Home/GetLecturesCount`);
   }
 }
+// api/Home/GetCoursesCount

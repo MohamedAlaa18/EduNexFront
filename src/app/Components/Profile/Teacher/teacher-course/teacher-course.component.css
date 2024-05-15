@@ -32,7 +32,7 @@ tr th:first-of-type {
 th,
 td {
   padding: 8px;
-  border-radius: 10px;
+  /* border-radius: 10px; */
   text-align: center;
   white-space: nowrap;
   overflow: hidden;
@@ -45,11 +45,16 @@ th {
 
 .courseID {
   cursor: pointer;
-  transition: 0.3s;
+  /* transition: 0.3s; */
 }
 
 .courseID:hover {
-  color: var(--border);
+  color: var(--wave2);
+}
+
+::ng-deep .mat-mdc-row:hover {
+  background-color: var(--active) !important;
+  transition: 0.3s !important;
 }
 
 .custom-icon-button {

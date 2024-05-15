@@ -1,5 +1,6 @@
 import { Component, ViewChild, ElementRef, OnInit } from '@angular/core';
 import { CountsService } from 'src/app/Services/Counts/counts.service';
+import { forkJoin } from 'rxjs';
 
 @Component({
   selector: 'app-target-counter',
@@ -13,37 +14,37 @@ export class TargetCounterComponent implements OnInit {
   @ViewChild('studentCounter', { static: true }) studentCounter!: ElementRef;
 
   teacherFinalNumber!: number;
-  courseFinalNumber = 70;
-  studyHourFinalNumber = 90;
+  courseFinalNumber!: number;
+  lectureFinalNumber!: number;
   studentFinalNumber!: number;
 
   constructor(private countData: CountsService) { }
 
   ngOnInit(): void {
-    this.observeCounters();
-    this.getCountAllTeachers();
-    this.getCountAllStudents();
+    this.getCounts();
   }
+
+  getCounts() {
+    forkJoin([
+      this.countData.getCountAllTeachers(),
+      this.countData.getCountAllStudents(),
+      this.countData.getCountAllCourses(),
+      this.countData.getCountAllLectures(),
+    ]).subscribe(([teacherCount, studentCount, courseCount, lectureCount]) => {
+      this.teacherFinalNumber = teacherCount;
+      this.studentFinalNumber = studentCount;
+      this.courseFinalNumber = courseCount;
+      this.lectureFinalNumber = lectureCount;
+      this.observeCounters();
+    });
+  }
+
 
   observeCounters() {
     this.observeCounter(this.teacherCounter.nativeElement, this.teacherFinalNumber);
     this.observeCounter(this.courseCounter.nativeElement, this.courseFinalNumber);
-    this.observeCounter(this.studyHourCounter.nativeElement, this.studyHourFinalNumber);
+    this.observeCounter(this.studyHourCounter.nativeElement, this.lectureFinalNumber);
     this.observeCounter(this.studentCounter.nativeElement, this.studentFinalNumber);
-  }
-
-  getCountAllTeachers() {
-    this.countData.getCountAllTeachers().subscribe(teacherFinalNumber => {
-      this.teacherFinalNumber = teacherFinalNumber['count'];
-      this.observeCounters();
-    });
-  }
-
-  getCountAllStudents() {
-    this.countData.getCountAllStudents().subscribe(studentFinalNumber => {
-      this.studentFinalNumber = studentFinalNumber['count'];
-      this.observeCounters();
-    });
   }
 
   observeCounter(element: HTMLElement, finalNumber: number) {
