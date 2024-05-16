@@ -238,6 +238,7 @@ hr {
   .disk {
     display: none;
   }
+
   .container {
     height: 100%;
   }
@@ -266,6 +267,11 @@ hr {
 @media (min-width: 920px) {
   .menu-btn {
     display: none;
+  }
+
+  .button-left-section,
+  .logo-container {
+    min-width: 290.83px;
   }
 }
 

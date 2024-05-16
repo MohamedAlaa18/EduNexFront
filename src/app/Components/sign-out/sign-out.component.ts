@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component, Inject } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/Services/Auth/auth.service';
@@ -14,7 +14,6 @@ export class SignOutComponent {
     @Inject(MAT_DIALOG_DATA) public data: any,
     private authService: AuthService,
     private router: Router,
-    // private cdRef: ChangeDetectorRef
   ) { }
 
   onNoClick(): void {

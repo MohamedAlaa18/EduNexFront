@@ -49,8 +49,10 @@
     <mat-toolbar color="primary">
       <header class="container-fluid flex justify-content-between">
         <!-- <div>Logo</div> -->
-        <img *ngIf="isDark()" src="/assets/image/edunex-dark.png" alt="eduNex-dark" class="logo">
-        <img *ngIf="!isDark()" src="/assets/image/edunex-light.png" alt="eduNex-light" class="logo">
+      <div class="logo-container">
+          <img *ngIf="isDark()" src="/assets/image/edunex-dark.png" alt="eduNex-dark" class="logo">
+          <img *ngIf="!isDark()" src="/assets/image/edunex-light.png" alt="eduNex-light" class="logo">
+      </div>
         <!-- <div></div> -->
 
         <div class="nav-items flex gap-1">
@@ -66,7 +68,7 @@
           <div id="marker"></div>
         </div>
 
-        <div class="flex" style="gap: 5px;">
+        <div class="flex justify-content-end button-left-section" style="gap: 5px;">
           <label class="theme-desktop">
             <input #toggleCheckbox class='toggle-checkbox' type='checkbox' [formControl]="theme"
               [checked]="theme.value" />

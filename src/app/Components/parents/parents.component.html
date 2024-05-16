@@ -32,7 +32,7 @@
 
     <div class="tables-container flex justify-content-start flex-column" *ngIf="studentData">
       <div class="col-lg-10">
-        <h3 class="text-center">{{studentData.studentName}}</h3>
+        <h3 class="text-center">{{studentData.studnetName}}</h3>
         <div class="custom-checkbox-container d-flex flex-wrap gap-2 my-3">
           <button mat-button *ngFor="let opt of options; let i = index" class="custom-checkbox"
             [class.checked]="opt.selected" (click)="toggleOption(i)">
