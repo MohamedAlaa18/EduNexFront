@@ -13,7 +13,7 @@ export class TeachersService {
   constructor(private httpClient: HttpClient) { }
 
   getAllTeachers(): Observable<any> {
-    return this.httpClient.get(`${this.URL}/teachers`);
+    return this.httpClient.get(`${this.URL}/approvedTeachers`);
   }
 
   getTeacherById(teacherId: string): Observable<any> {
