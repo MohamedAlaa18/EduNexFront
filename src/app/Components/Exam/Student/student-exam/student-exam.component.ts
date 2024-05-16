@@ -102,7 +102,8 @@ export class StudentExamComponent implements OnInit {
     this.examData.getDurationExam(id, student).subscribe(
       startData => {
         this.startData = startData;
-        if(this.startData.endTime){
+        // console.log(startData)
+        if(!this.startData.endTime){
           this.duration = this.exam.duration - durationCalculation(this.startData.startTime);
         }else{
           this.duration = 0;
