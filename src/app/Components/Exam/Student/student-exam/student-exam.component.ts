@@ -106,6 +106,7 @@ export class StudentExamComponent implements OnInit {
           this.duration = this.exam.duration - durationCalculation(this.startData.startTime);
         }else{
           this.duration = 0;
+          this.submitExam(this.examId);
         }
       },
     );
