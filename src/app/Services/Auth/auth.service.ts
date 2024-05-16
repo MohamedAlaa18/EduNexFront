@@ -70,21 +70,22 @@ export class AuthService {
             panelClass: 'snackbar-success'
           });
 
-          if (localStorage.getItem(this.currentUserRole) == "Teacher") {
-            if (response.message == "pending" || response.message == ("Rejected")) {
+          this.router.navigate(['/home']);
+          // if (localStorage.getItem(this.currentUserRole) == "Teacher") {
+          //   if (response.message == "pending" || response.message == ("Rejected")) {
 
-              this.router.navigate([`/teacher/pending/${this.getUserId()}`]);
+          //     this.router.navigate([`/teacher/pending/${this.getUserId()}`]);
 
-            } else {
-              this.router.navigate([`/teacher/profile/${this.getUserId()}`]);
-            }
-          }
-          else if (localStorage.getItem(this.currentUserRole) == "Student") {
-            this.router.navigate(['/home']);
-          }
-          else if (localStorage.getItem(this.currentUserRole) == "Admin") {
-            this.router.navigate(['/admindash']);
-          }
+          //   } else {
+          //     this.router.navigate([`/teacher/profile/${this.getUserId()}`]);
+          //   }
+          // }
+          // else if (localStorage.getItem(this.currentUserRole) == "Student") {
+          //   this.router.navigate(['/home']);
+          // }
+          // else if (localStorage.getItem(this.currentUserRole) == "Admin") {
+          //   this.router.navigate(['/admindash']);
+          // }
         }
       }),
       catchError(error => {
