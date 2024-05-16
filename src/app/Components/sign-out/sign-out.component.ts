@@ -14,7 +14,7 @@ export class SignOutComponent {
     @Inject(MAT_DIALOG_DATA) public data: any,
     private authService: AuthService,
     private router: Router,
-    private cdRef: ChangeDetectorRef
+    // private cdRef: ChangeDetectorRef
   ) { }
 
   onNoClick(): void {
@@ -34,8 +34,8 @@ export class SignOutComponent {
     this.authService.logOut().subscribe(
       () => {
         console.log('Logout successful');
+        location.reload();
         this.router.navigate(['/']);
-        this.cdRef.detectChanges();
       },
       error => {
         console.error('Logout failed:', error);

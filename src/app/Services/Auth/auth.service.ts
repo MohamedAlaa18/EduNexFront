@@ -70,7 +70,8 @@ export class AuthService {
             panelClass: 'snackbar-success'
           });
 
-          this.router.navigate(['/home']);
+          this.router.navigate(['/']);
+          // location.reload();
           // if (localStorage.getItem(this.currentUserRole) == "Teacher") {
           //   if (response.message == "pending" || response.message == ("Rejected")) {
 
