@@ -34,7 +34,7 @@ export class SignOutComponent {
     this.authService.logOut().subscribe(
       () => {
         console.log('Logout successful');
-        location.reload();
+        // location.reload();
         this.router.navigate(['/']);
       },
       error => {
