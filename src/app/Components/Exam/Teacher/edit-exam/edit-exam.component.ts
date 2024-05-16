@@ -110,7 +110,7 @@ export class EditExamComponent implements OnInit {
       validators: [
         isAnyValueMissing,
         isStartDateBeforeEndDate,
-        isStartDateInFuture,
+        // isStartDateInFuture,
         isDurationValid,
       ]
     });

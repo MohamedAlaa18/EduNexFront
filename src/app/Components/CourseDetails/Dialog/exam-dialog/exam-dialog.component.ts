@@ -38,7 +38,7 @@ export class ExamDialogComponent {
         isAnyValueMissing,
         isStartDateBeforeEndDate,
         isDurationValid,
-        isStartDateInFuture
+        // isStartDateInFuture
       ]
     });
   }
