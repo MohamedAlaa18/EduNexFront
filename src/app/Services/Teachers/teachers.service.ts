@@ -8,7 +8,6 @@ import { Observable } from 'rxjs';
 })
 export class TeachersService {
   URL = environment.API_KEY;
-  // URL = process.env['API_KEY'];
 
   constructor(private httpClient: HttpClient) { }
 
