@@ -21,23 +21,23 @@ export class AppComponent implements OnInit {
     });
 
     // Prevent right-click context menu
-    // document.addEventListener('contextmenu', function (event) {
-    //   event.preventDefault();
-    // });
+    document.addEventListener('contextmenu', function (event) {
+      event.preventDefault();
+    });
 
     // Prevent Ctrl+Shift+C
-    // document.addEventListener('keydown', (event) => {
-    //   if (event.ctrlKey && event.shiftKey && event.key === 'C') {
-    //     event.preventDefault();
-    //   }
-    // });
+    document.addEventListener('keydown', (event) => {
+      if (event.ctrlKey && event.shiftKey && event.key === 'C') {
+        event.preventDefault();
+      }
+    });
   }
 
   // Prevent F12 and Ctrl+Shift+I
-  // @HostListener('document:keydown', ['$event'])
-  // handleKeyboardEvent(event: KeyboardEvent) {
-  //   if (event.key === 'F12' || (event.ctrlKey && event.shiftKey && event.key === 'I')) {
-  //     event.preventDefault();
-  //   }
-  // }
+  @HostListener('document:keydown', ['$event'])
+  handleKeyboardEvent(event: KeyboardEvent) {
+    if (event.key === 'F12' || (event.ctrlKey && event.shiftKey && event.key === 'I')) {
+      event.preventDefault();
+    }
+  }
 }
