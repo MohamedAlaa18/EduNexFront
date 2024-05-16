@@ -7,6 +7,7 @@ import { ICourse } from 'src/app/Model/icourse';
 import { CoursesService } from 'src/app/Services/Courses/courses.service';
 import { Observable, forkJoin } from 'rxjs';
 import { CountsService } from 'src/app/Services/Counts/counts.service';
+import { PaymentService } from 'src/app/Services/Payment/payment.service';
 
 @Component({
   selector: 'app-teacher-course',
@@ -16,6 +17,7 @@ import { CountsService } from 'src/app/Services/Counts/counts.service';
 export class TeacherCourseComponent implements OnInit {
   courses!: ICourse[];
   teacherID!: string
+  balance!: number;
 
   displayedColumns: string[] = ['CourseName', 'Price', 'PurchaseTimes', 'Actions'];
   dataSource: PeriodicElement[] = [];
@@ -24,13 +26,22 @@ export class TeacherCourseComponent implements OnInit {
     public dialog: MatDialog,
     private authData: AuthService,
     private courseData: CoursesService,
-    private countData: CountsService
+    private countData: CountsService,
+    private paymentData: PaymentService,
   ) {
     this.teacherID = this.authData.getUserId();
   }
 
   ngOnInit(): void {
     this.getAllTeacherCourses();
+    this.getWalletBalance();
+  }
+
+  getWalletBalance() {
+    this.paymentData.getWalletBalance(this.authData.getUserId())
+      .subscribe(balance => {
+        this.balance = balance;
+      });
   }
 
   getAllTeacherCourses(): void {

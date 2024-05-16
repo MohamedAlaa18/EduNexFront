@@ -1,61 +1,75 @@
-<div class="flex flex-column justify-content-center gap-2" *ngIf="courses">
-  <div class="overflow-x flex-grow-1">
-    <div class="table-container flex-grow-1">
-      <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 flex-grow-1">
-        <!-- Course Column -->
-        <ng-container matColumnDef="CourseName" class="CourseName">
-          <th mat-header-cell *matHeaderCellDef>اسم الكورس</th>
-          <td [routerLink]="['/course', element.courseID]" mat-cell *matCellDef="let element" class="courseID">
-            <div class="course-details-container flex gap-2">
-              <img [src]="element.thumbnail" alt="Course Thumbnail" class="course-thumbnail" width="100" height="100">
-              <span>{{element.courseName}}</span>
-            </div>
-          </td>
-        </ng-container>
-
-        <!-- Price Column -->
-        <ng-container matColumnDef="Price">
-          <th mat-header-cell *matHeaderCellDef>السعر</th>
-          <td mat-cell *matCellDef="let element">{{element.price}} ج.م</td>
-        </ng-container>
-
-        <!-- Purchase Date Column -->
-        <ng-container matColumnDef="PurchaseTimes">
-          <th mat-header-cell *matHeaderCellDef> عدد مرات الشراء</th>
-          <td mat-cell *matCellDef="let element">{{element.purchaseTimes}}</td>
-        </ng-container>
-
-
-        <!-- Actions Column -->
-        <ng-container matColumnDef="Actions">
-          <th mat-header-cell *matHeaderCellDef></th>
-          <td mat-cell *matCellDef="let element">
-            <div class="flex buttons">
-              <button mat-icon-button class="width-50 m-0 custom-icon-button" style="color: red;"
-                (click)="openDeleteCourseConfirmationDialog(element.courseID)">
-                <mat-icon class="mx-2">delete</mat-icon>
-              </button>
-
-              <button mat-icon-button (click)="openAddEditCourseConfirmationDialog(element)"
-                class="width-50 m-0 custom-icon-button" style="color: green;">
-                <mat-icon class="mx-2">edit</mat-icon>
-              </button>
-            </div>
-          </td>
-        </ng-container>
-
-        <!-- Row definition -->
-        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-      </table>
+<div class="form-container d-flex flex-column gap-3">
+  <div class="wallet-section flex gap-2 p-3">
+    <i class="fa fa-wallet px-2"></i>
+    <div class="wallet-text d-flex flex-column gap-1">
+      <p>
+        {{balance}} ج.م
+      </p>
+      <p>
+        الميزانية
+      </p>
     </div>
   </div>
 
-  <div class="flex gap-1">
-    <span style="font-weight: 700;">أضافة كورس</span>
-    <button mat-icon-button (click)="openAddEditCourseConfirmationDialog()">
-      <mat-icon>add_circle</mat-icon>
-    </button>
+  <div class="flex flex-column justify-content-center gap-2" *ngIf="courses">
+    <div class="overflow-x flex-grow-1">
+      <div class="table-container flex-grow-1">
+        <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 flex-grow-1">
+          <!-- Course Column -->
+          <ng-container matColumnDef="CourseName" class="CourseName">
+            <th mat-header-cell *matHeaderCellDef>اسم الكورس</th>
+            <td [routerLink]="['/course', element.courseID]" mat-cell *matCellDef="let element" class="courseID">
+              <div class="course-details-container flex gap-2">
+                <img [src]="element.thumbnail" alt="Course Thumbnail" class="course-thumbnail" width="100" height="100">
+                <span>{{element.courseName}}</span>
+              </div>
+            </td>
+          </ng-container>
+
+          <!-- Price Column -->
+          <ng-container matColumnDef="Price">
+            <th mat-header-cell *matHeaderCellDef>السعر</th>
+            <td mat-cell *matCellDef="let element">{{element.price}} ج.م</td>
+          </ng-container>
+
+          <!-- Purchase Date Column -->
+          <ng-container matColumnDef="PurchaseTimes">
+            <th mat-header-cell *matHeaderCellDef> عدد مرات الشراء</th>
+            <td mat-cell *matCellDef="let element">{{element.purchaseTimes}}</td>
+          </ng-container>
+
+
+          <!-- Actions Column -->
+          <ng-container matColumnDef="Actions">
+            <th mat-header-cell *matHeaderCellDef></th>
+            <td mat-cell *matCellDef="let element">
+              <div class="flex buttons">
+                <button mat-icon-button class="width-50 m-0 custom-icon-button" style="color: red;"
+                  (click)="openDeleteCourseConfirmationDialog(element.courseID)">
+                  <mat-icon class="mx-2">delete</mat-icon>
+                </button>
+
+                <button mat-icon-button (click)="openAddEditCourseConfirmationDialog(element)"
+                  class="width-50 m-0 custom-icon-button" style="color: green;">
+                  <mat-icon class="mx-2">edit</mat-icon>
+                </button>
+              </div>
+            </td>
+          </ng-container>
+
+          <!-- Row definition -->
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+      </div>
+    </div>
+
+    <div class="flex gap-1">
+      <span style="font-weight: 700;">أضافة كورس</span>
+      <button mat-icon-button (click)="openAddEditCourseConfirmationDialog()">
+        <mat-icon>add_circle</mat-icon>
+      </button>
+    </div>
   </div>
 </div>
 

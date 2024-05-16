@@ -1,9 +1,24 @@
 table,
-.overflow-x {
+.overflow-x,
+.wallet-section {
   box-shadow: var(--border) 0px 0px 0px 1px;
   border-radius: 10px;
   background-color: var(--bg);
   width: 100%;
+}
+
+.wallet-section {
+  width: 230px;
+  height: 100px;
+}
+
+.fa-wallet {
+  font-size: 3.5rem;
+}
+
+.wallet-text p {
+  font-weight: 700;
+  margin-bottom: 5px;
 }
 
 table {
